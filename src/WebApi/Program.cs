@@ -45,11 +45,10 @@ app.MapPost("/orders", (HttpContext http) =>
 
 app.MapGet("/orders/last", () => Domain.Services.OrderService.LastOrders);
 
-app.MapGet("/info", (IConfiguration cfg) => new
+app.MapGet("/info", () => new
 {
-    sql = BadDb.ConnectionString,
-    env = Environment.GetEnvironmentVariables(),
-    version = "v0.0.1-unsecure"
+    databaseConfigured = !string.IsNullOrWhiteSpace(BadDb.ConnectionString),
+    version = "v0.0.1"
 });
 
 await app.RunAsync();
