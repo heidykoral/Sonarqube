@@ -1,11 +1,9 @@
 using System;
 using System.Data;
-using System.Data.SqlClient;
+using Microsoft.Data.SqlClient;
 
 namespace Infrastructure.Data;
 
-using System.Data;
-using System.Data.SqlClient;
 
 public static class BadDb
 {
@@ -25,5 +23,6 @@ public static class BadDb
         var conn = new SqlConnection(ConnectionString);
         var cmd = new SqlCommand(sql, conn);
         conn.Open();
-        return cmd.ExecuteReader(); 
+        return cmd.ExecuteReader();
+    }
 }
